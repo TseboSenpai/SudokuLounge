@@ -25,7 +25,7 @@ export  const fetchPuzzle = async ({
 
         setPuzzle(puzzle);
         setSolution(solution);
-        setBoard(solution.map((row) => [...row]));
+        setBoard(puzzle.map((row) => [...row]));
         setSelected(null);
     } catch (e) {
         setError('Failed to fetch puzzle.', e);
