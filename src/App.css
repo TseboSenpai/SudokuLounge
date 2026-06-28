@@ -1,66 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&display=swap');
+
 :root {
-    --grey: #333;
+  --sumi:  #3a322a;
+  --washi: #f2ead6;
+  --ink:   #2c2620;
+  --shu:   #b23b2e;
 }
 
-.container {
-  border-radius: 8px;
-  padding: 16px;
-  background: #7F5836;
+/* ── Wood frame ── */
+.board-frame {
+  display: inline-block;
+  padding: 24px;
+  border-radius: 9px;
+  overflow: hidden;
+  background-color: #7c5230;
+  background-image:
+    repeating-linear-gradient(91deg, rgba(0,0,0,.12) 0 2px, transparent 2px 6px),
+    repeating-linear-gradient(89deg, rgba(255,255,255,.06) 0 1px, transparent 1px 10px),
+    linear-gradient(180deg, #8a5d31, #6c4626);
+  box-shadow:
+    0 20px 42px rgba(45,25,10,.38),
+    inset 0 1px 0 rgba(255,255,255,.14),
+    inset 0 -2px 6px rgba(0,0,0,.30);
 }
 
-.table {
-  border-collapse: collapse;
+/* ── Board (3×3 of blocks) ── */
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  background: var(--sumi);
+  padding: 3px;
+  width: 486px;
+  height: 486px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.4);
 }
 
+/* ── Block (3×3 of cells) ── */
+.block {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--sumi);
+}
+
+/* ── Cell ── */
 .cell {
-  border: 1px solid #443025;
-  padding: 0;
+  position: relative;
+  background: var(--washi);
+  cursor: pointer;
+  transition: background 120ms ease;
 }
 
-.cell:nth-child(3),
-.cell:nth-child(6),
-.cell:nth-child(9) {
-  border-right: 3px solid var(--grey);
+.cell--peer {
+  background: #ece2c9;
 }
 
-.cell:nth-child(1) {
-  border-left: 3px solid var(--grey);
+/* Selection ring overlay */
+.cell-ring {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 2px var(--shu);
+  background: rgba(178,59,46,.10);
+  pointer-events: none;
+  z-index: 1;
 }
 
-.table tr:nth-child(3) .cell,
-.table tr:nth-child(6) .cell,
-.table tr:nth-child(9) .cell {
-  border-bottom: 3px solid var(--grey);
-}
-
-.table tr:nth-child(1) .cell {
-  border-top: 3px solid var(--grey);
-}
-
+/* ── Input ── */
 input {
-  width: 50px;
-  height: 50px;
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
   text-align: center;
-  font-size: 23px;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 29px;
+  font-weight: 600;
+  color: var(--ink);
   border: none;
   outline: none;
-  background: inherit;
-  color: black;
-  cursor: default;
-}
-
-input:focus {
-  background-color: #EC9C9D;
+  background: transparent;
+  cursor: pointer;
   caret-color: transparent;
+  /* vertical centering for absolute-positioned input */
+  padding: 0;
+  line-height: normal;
 }
 
-.same-row,
-.same-col,
-.same-box {
-  background-color: #FDF2F2;
-  opacity: 0.5;
+/* User-entered numbers in shu-red */
+input:not([readonly]) {
+  color: var(--shu);
 }
 
+/* ── Non-board styles ── */
 .status {
   font-weight: bold;
   color: white;
@@ -69,12 +104,11 @@ input:focus {
   background-color: #443025;
   padding: 10px 25px;
   border-radius: 10px;
-
   left: 50%;
   transform: translateX(-50%);
 }
 
 .green {
-  background-color: #839958;
+  background-color: #839958 !important;
   transition: background-color 0.3s ease;
 }
