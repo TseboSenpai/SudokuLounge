@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700;800&family=Zen+Maru+Gothic:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap');
+
+/* ── Stage ── */
+.hero-stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* ── Video background ── */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Overlay (scrim + UI) — fades out when video plays ── */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.6s ease;
+}
+
+.hero-overlay--out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Scrim ── */
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20,40,70,.34),
+    rgba(20,40,70,0) 24%,
+    rgba(20,40,70,0) 60%,
+    rgba(20,30,15,.30)
+  );
+}
+
+/* ── Wooden crossbeam ── */
+.hero-beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background-image:
+    repeating-linear-gradient(180deg, rgba(60,30,10,.16) 0 2px, transparent 2px 7px),
+    repeating-linear-gradient(90deg, rgba(255,236,205,.05) 0 60px, rgba(60,30,10,.07) 60px 130px),
+    linear-gradient(180deg, #b27c43, #8a5a2e 58%, #6e4423);
+  border-bottom: 3px solid #5a3a1c;
+  box-shadow: 0 5px 13px rgba(40,25,10,.42), inset 0 2px 0 rgba(255,236,205,.32);
+}
+
+/* Rope-anchor bolts on the beam */
+.hero-bolt {
+  position: absolute;
+  bottom: -6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #7b818b, #2b2e33);
+  box-shadow: 0 1px 2px rgba(0,0,0,.45);
+  left: 50%;
+}
+.hero-bolt--left  { transform: translateX(-127px); }
+.hero-bolt--right { transform: translateX(123px); }
+
+/* ── Hanging ropes ── */
+.hero-rope {
+  position: absolute;
+  top: 42px;
+  width: 5px;
+  height: 96px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #5a3c22, #9a6e42, #5a3c22);
+  left: 50%;
+}
+.hero-rope--left  { transform: translateX(-128px) rotate(7deg); }
+.hero-rope--right { transform: translateX(124px) rotate(-7deg); }
+
+/* ── Kanban plaque ── */
+@keyframes signSway {
+  0%, 100% { transform: translateX(-50%) rotate(-1.1deg); }
+  50%       { transform: translateX(-50%) rotate( 1.1deg); }
+}
+
+.hero-plaque {
+  position: absolute;
+  top: 122px;
+  left: 50%;
+  width: 330px;
+  padding: 30px 30px 26px;
+  text-align: center;
+  border: 5px solid #6e4423;
+  border-radius: 14px;
+  background-image:
+    repeating-linear-gradient(180deg, rgba(80,45,15,.16) 0 2px, transparent 2px 8px),
+    linear-gradient(180deg, #cf9a58, #a87237 70%, #9a6630);
+  box-shadow:
+    0 18px 30px rgba(40,25,10,.45),
+    inset 0 2px 0 rgba(255,236,205,.35),
+    inset 0 -5px 10px rgba(70,35,12,.4);
+  transform-origin: top center;
+  animation: signSway 5.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-plaque {
+    animation: none;
+    transform: translateX(-50%);
+  }
+}
+
+.hero-kanji {
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 800;
+  font-size: 62px;
+  line-height: .92;
+  color: #3f2710;
+  letter-spacing: .06em;
+  text-shadow: 0 1px 0 rgba(255,232,196,.45), 0 -1px 1px rgba(0,0,0,.28);
+}
+
+.hero-divider {
+  width: 64px;
+  height: 2px;
+  background: rgba(63,39,16,.45);
+  margin: 14px auto 12px;
+}
+
+.hero-wordmark {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  letter-spacing: .16em;
+  color: #43280f;
+  text-shadow: 0 1px 0 rgba(255,232,196,.4);
+}
+
+.hero-subline {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 10px;
+  letter-spacing: .4em;
+  color: rgba(63,39,16,.7);
+  margin-top: 7px;
+  padding-left: .4em;
+}
+
+/* ── Footer ── */
+.hero-footer {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+
+.hero-tagline {
+  padding: 9px 20px;
+  border-radius: 999px;
+  background: rgba(244,238,218,.9);
+  box-shadow: 0 4px 12px rgba(20,30,15,.25);
+  font-family: 'Shippori Mincho', serif;
+  font-size: 14px;
+  color: #3a3328;
+  letter-spacing: .04em;
+}
+
+.hero-play-btn {
+  padding: 11px 52px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: .14em;
+  color: #fff9f0;
+  background-image:
+    linear-gradient(180deg, rgba(255,220,170,.18) 0%, transparent 55%),
+    linear-gradient(180deg, #b25c20, #8a3e10);
+  box-shadow:
+    0 6px 18px rgba(80,30,8,.40),
+    inset 0 1px 0 rgba(255,220,180,.30),
+    inset 0 -2px 4px rgba(0,0,0,.25);
+  transition: transform 100ms ease, box-shadow 100ms ease;
+}
+
+.hero-play-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 24px rgba(80,30,8,.45),
+    inset 0 1px 0 rgba(255,220,180,.30),
+    inset 0 -2px 4px rgba(0,0,0,.25);
+}
+
+.hero-play-btn:active {
+  transform: translateY(1px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .hero-plaque  { width: 78vw; max-width: 330px; }
+  .hero-kanji   { font-size: 48px; }
+  .hero-tagline { font-size: 12px; }
+}

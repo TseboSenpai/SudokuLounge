@@ -1,4 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700;800&family=Zen+Maru+Gothic:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap');
+
+/* ── Root ── */
+.app-root {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* ── Game overlay fades in over the video's last frame ── */
+@keyframes gameIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.game-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: gameIn 0.5s ease-out both;
+}
+
+.game-title {
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.6);
+  margin: 0 0 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-overlay { animation: none; }
+}
 
 :root {
   --sumi:  #3a322a;
