@@ -39,6 +39,7 @@ function App() {
       }, 30);
     } else {
       setStatus('Incorrect, try again!');
+      setTimeout(() => setStatus(''), 2000);
       setGreenCount(0);
     }
   };
