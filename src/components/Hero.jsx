@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 import transitionVideo from '../assets/SudokuLounge.mp4';
+import PlankDefs from './PlankDefs';
+import PlankButton from './PlankButton';
 import './Hero.css';
 
 const Hero = ({ onEnded }) => {
@@ -13,6 +15,7 @@ const Hero = ({ onEnded }) => {
 
   return (
     <div className="hero-stage">
+      <PlankDefs />
 
       {/* Video — first frame acts as the background, plays on click */}
       <video
@@ -54,9 +57,9 @@ const Hero = ({ onEnded }) => {
           <div className="hero-tagline">
             ひと息つきながら、ゆっくりと。&ensp;—&ensp;solve at your own pace
           </div>
-          <button className="hero-play-btn" onClick={handlePlay}>
+          <PlankButton onClick={handlePlay} width={260} height={70}>
             Play
-          </button>
+          </PlankButton>
         </div>
 
       </div>

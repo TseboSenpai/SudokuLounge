@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&display=swap');
+
+.plankbtn {
+  position: relative;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  filter: drop-shadow(0 11px 13px rgba(0,0,0,.6));
+  transition: transform .12s ease, filter .12s ease;
+  display: block;
+}
+
+.plankbtn svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.plankbtn-lbl {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 49%;
+  transform: translateY(-50%);
+  text-align: center;
+  z-index: 2;
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: #f7e7c5;
+  text-shadow: 0 1px 0 #7c4a1c, 0 2px 0 #5e3514, 0 3px 5px rgba(0,0,0,.45);
+  pointer-events: none;
+}
+
+.plankbtn.is-hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08) drop-shadow(0 13px 16px rgba(0,0,0,.6)) drop-shadow(0 0 13px rgba(255,201,120,.5));
+}
+
+.plankbtn.is-press {
+  transform: translateY(4px);
+  filter: brightness(.95) drop-shadow(0 4px 6px rgba(0,0,0,.55));
+}
